@@ -3,7 +3,7 @@ dependencies: []
 
 galaxy_info:
   author: anmolnagpal
-  description: Install nginx packages
+  description: Install nginx
   company: "CloudDrove, LLC"
   license: "license (BSD, MIT)"
   min_ansible_version: 2.4
