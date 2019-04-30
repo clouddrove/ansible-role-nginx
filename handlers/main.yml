@@ -1,0 +1,13 @@
+---
+
+- name: restart nginx
+  systemd:
+    name: nginx
+    state: restarted
+  tags:
+    - nginx
+
+- name: reload nginx
+  systemd:
+    name: nginx
+    state: reloaded
