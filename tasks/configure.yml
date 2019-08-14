@@ -9,6 +9,7 @@
     group: "{{ nginx_group }}"
     mode: 0755
     recurse: yes
+  changed_when: false
   with_items:
     - "{{ nginx_config_dir }}/sites-available"
     - "{{ nginx_config_dir }}/sites-enabled"
@@ -44,7 +45,7 @@
     src: "{{ item }}"
     dest: "{{ nginx_config_dir }}/sites-enabled/{{ item | basename }}"
   with_fileglob:
-    - ../templates/sites-enabled/*.*
+    - ../templates/config/sites-enabled/*.*
 
 - name: create nginx logs files
   changed_when: false
