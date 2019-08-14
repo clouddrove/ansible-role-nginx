@@ -1,7 +1,7 @@
 ---
 # defaults file for ansible-role-nginx
 
-state: present
+state: absent
 
 nginx_user: nginx
 nginx_group: nginx
@@ -9,6 +9,5 @@ nginx_group: nginx
 nginx_config_dir: /etc/nginx
 nginx_log_path: /var/log/nginx
 
-
-redis_server_bind: 0.0.0.0
-redis_server_port: 80
+nginx_bind: 0.0.0.0
+nginx_port: 6379

@@ -15,8 +15,8 @@
 
 - name: wait for nginx to become ready
   wait_for:
-    host: "{{ nginx_server_bind }}"
-    port: "{{ nginx_server_port }}"
+    host: "{{ nginx_bind }}"
+    port: "{{ nginx_port }}"
     state: started
     delay: 5
     connect_timeout: 15

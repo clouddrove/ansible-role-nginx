@@ -1,4 +1,5 @@
 ---
+#create nginx user
 
 - name: setup group
   group:
@@ -11,3 +12,4 @@
     system: true
     createhome: false
     group: "{{ nginx_group }}"
+
