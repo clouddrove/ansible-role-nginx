@@ -55,4 +55,3 @@
   with_items:
     - "{{ nginx_log_path }}/error.log"
     - "{{ nginx_log_path }}/access.log"
-

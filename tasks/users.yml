@@ -12,4 +12,3 @@
     system: true
     createhome: false
     group: "{{ nginx_group }}"
-
