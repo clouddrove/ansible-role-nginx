@@ -1,10 +1,10 @@
 ---
 # defaults file for ansible-role-nginx
+
+state: present
+
 nginx_user: nginx
 nginx_group: nginx
-nginx_path: /etc/nginx
-sites_available: "{{ nginx_path }}/sites-available"
-sites_enabled: "{{ nginx_path }}/sites-enabled"
-conf_d: "{{ nginx_path }}/sites-enabled"
-access_log: "/var/log/nginx/access.log"
-error_log: "/var/log/nginx/error.log"
+
+nginx_config_dir: /etc/nginx
+nginx_log_path: /var/log/nginx

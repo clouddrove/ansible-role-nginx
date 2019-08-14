@@ -1,11 +1,11 @@
 ---
+# install nginx
 
 - name: Install the nginx package
   apt:
-     name: nginx
-     state: present
-     update_cache: yes
-
+    name: nginx
+    state: "{{ state }}"
+    update_cache: yes
 
 - name: reload systemd
   command: systemctl daemon-reload

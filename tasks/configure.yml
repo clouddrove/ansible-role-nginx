@@ -1,4 +1,5 @@
 ---
+## configure nginx
 
 - name: create nginx dirs
   file:
@@ -9,22 +10,48 @@
     mode: 0755
     recurse: yes
   with_items:
-    - "{{ sites_available }}"
-    - "{{ sites_enabled }}"
-    - "{{ conf_d }}"
+    - "{{ nginx_config_dir }}/sites-available"
+    - "{{ nginx_config_dir }}/sites-enabled"
+    - "{{ nginx_config_dir }}/sites-enabled"
+    - "{{ nginx_config_dir }}/error-page"
+    - "{{ nginx_config_dir }}/ssl"
+    - "{{ nginx_config_dir }}/site.d"
+    - "{{ nginx_log_path }}"
 
+- name: transfer site.d configuration
+  template:
+    src: "{{ item }}"
+    dest: "{{ nginx_config_dir }}/site.d/{{ item | basename }}"
+  with_fileglob:
+    - ../templates/config/site.d/*.*
+
+- name: transfer error-page configuration
+  template:
+    src: "{{ item }}"
+    dest: "{{ nginx_config_dir }}/error-page/{{ item | basename }}"
+  with_fileglob:
+    - ../templates/config/error-page/*.*
 
 - name: transfer nginx.conf configuration
   template:
     src: "{{ item }}"
-    dest: "{{ nginx_path }}/nginx.conf"
+    dest: "{{ nginx_config_dir }}/nginx.conf"
   with_fileglob:
     - ../templates/config/nginx.conf
 
-
-- name: transfer mime.types configuration
+- name: transfer sites-enabled configuration
   template:
     src: "{{ item }}"
-    dest: "{{ nginx_path }}/mime.types"
+    dest: "{{ nginx_config_dir }}/sites-enabled/{{ item | basename }}"
   with_fileglob:
-    - ../templates/config/mime.types
+    - ../templates/sites-enabled/*.*
+
+- name: create nginx logs files
+  changed_when: false
+  file:
+    path: "{{ item }}"
+    mode: 0644
+    state: touch
+  with_items:
+    - "{{ nginx_log_path }}/error.log"
+    - "{{ nginx_log_path }}/access.log"
