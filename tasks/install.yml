@@ -7,7 +7,17 @@
     state: "{{ state }}"
     update_cache: yes
 
-- name: reload systemd
-  command: systemctl daemon-reload
-  notify:
-     - restart nginx
+- name: ensure nginx service is restarted
+  service:
+    name: nginx
+    state: restarted
+  changed_when: false
+
+- name: wait for nginx to become ready
+  wait_for:
+    host: "{{ nginx_server_bind }}"
+    port: "{{ nginx_server_port }}"
+    state: started
+    delay: 5
+    connect_timeout: 15
+    timeout: 300

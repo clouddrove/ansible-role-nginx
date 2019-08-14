@@ -4,10 +4,16 @@
   systemd:
     name: nginx
     state: restarted
-  tags:
-    - nginx
+    enabled: true
 
 - name: reload nginx
   systemd:
     name: nginx
     state: reloaded
+    enabled: true
+
+- name: reload nginx
+  service:
+    name: nginx
+    state: reloaded
+    enabled: true
