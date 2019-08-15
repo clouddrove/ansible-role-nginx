@@ -7,10 +7,18 @@ repos:
       - id: ansible-lint
         files: \.(yaml|yml)$
 
-  - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v2.0.0
+
+
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks.git
+    rev: v2.2.3
     hooks:
-      - id: check-merge-conflict
+      - id: end-of-file-fixer
       - id: trailing-whitespace
+      - id: mixed-line-ending
+      - id: check-byte-order-marker
+      - id: check-executables-have-shebangs
+      - id: check-merge-conflict
+      - id: debug-statements
       - id: check-yaml
       - id: check-added-large-files
