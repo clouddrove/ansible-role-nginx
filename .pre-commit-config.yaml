@@ -7,9 +7,6 @@ repos:
       - id: ansible-lint
         files: \.(yaml|yml)$
 
-
-
-
   - repo: https://github.com/pre-commit/pre-commit-hooks.git
     rev: v2.2.3
     hooks:
