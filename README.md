@@ -8,7 +8,7 @@
 </h1>
 
 <p align="center" style="font-size: 1.2rem;">
-    This ansible role is used to install Nginx server on Debian.
+    This ansible role is used for the installation of Nginx server with docker on Debian.
      </p>
 
 <p align="center">
@@ -39,9 +39,9 @@
 
 
 
-We eat, drink, sleep and most importantly love **DevOps**. We are thinking Automation is better way to setup a server and install the required environments. It is critical to maintaining same environment on local, testing or production system so resolve this we move to create small role for environments element.
+We eat, drink, sleep and most importantly love **DevOps**. DevOps always promotes automation and standardisation. While setting up various environments like local, dev, testing, production, etc. it is critical to maintain the same environment across. This can easily be achieved using automating the environment setup & installation with the help of ansible-playbooks.
 
-This role is basically combination of [tasks in ansible-playbook](https://docs.ansible.com/ansible/latest/user_guide/playbooks_intro.html) and includes tests.
+Smaller roles are created for each environment elements; which also include tasks & tests. These roles can then be grouped together in [ansible-playbook](https://docs.ansible.com/ansible/latest/user_guide/playbooks_intro.html) to achieve the desired yet consistent results.
 
 
 

@@ -33,15 +33,15 @@ prerequesties:
     url: "https://molecule.readthedocs.io/en/stable/installation.html"
   - name: "Docker"
     url: "https://docs.docker.com/install/linux/docker-ce/ubuntu"
-# yamllint enable
+
 # What Includes to display
 what_includes:
   - name: "Nginx"
 
 #  description of this project
 description: |-
-  This ansible role is used to install Nginx server on Debian.
-
+  This ansible role is used for the installation of Nginx server with docker on Debian.
+# yamllint enable
 # How to use this project
 usage: |-
   ### Simple Example
