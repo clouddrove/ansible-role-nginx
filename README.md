@@ -76,7 +76,6 @@ For including the role in your playbook this is the basic configuration:
 ```ansible
     - hosts: localhost
       remote_user: root
-      become: true
       roles:
         - ansible-role-nginx
 ```

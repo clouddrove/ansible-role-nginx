@@ -1,6 +1,9 @@
 ---
 - name: Converge
-  hosts: localhost
-  become: true
+  hosts: all
+
+  vars:
+    example_test_var: "Nothing_to_see_here"
+
   roles:
-    - role: ansible-role-nginx
+    - role: "{{ lookup('env', 'MOLECULE_PROJECT_DIRECTORY') | basename }}"
