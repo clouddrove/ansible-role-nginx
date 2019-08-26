@@ -8,16 +8,25 @@
 </h1>
 
 <p align="center" style="font-size: 1.2rem;">
-    This ansible role is used for the installation of Nginx server with docker on Debian.
+    This ansible role is used to install Nginx Server on linux.
      </p>
 
 <p align="center">
 
 <a href="https://www.ansible.com">
-  <img src="https://img.shields.io/badge/Ansible-2.8-green" alt="Ansible">
+  <img src="https://img.shields.io/badge/Ansible-2.8-green?style=flat&logo=ansible" alt="Ansible">
 </a>
 <a href="LICENSE.md">
   <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="Licence">
+</a>
+<a href="https://ubuntu.com/">
+  <img src="https://img.shields.io/badge/ubuntu-16.x-orange?style=flat&logo=ubuntu" alt="Distribution">
+</a>
+<a href="https://ubuntu.com/">
+  <img src="https://img.shields.io/badge/ubuntu-18.x-orange?style=flat&logo=ubuntu" alt="Distribution">
+</a>
+<a href="https://www.centos.org/">
+  <img src="https://img.shields.io/badge/centos-7.x-orange" alt="Distribution">
 </a>
 
 
@@ -51,8 +60,6 @@ This module has a few dependencies:
 
 - [Ansible2.8](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
 - [Python](https://www.python.org/downloads)
-- [Molecule](https://molecule.readthedocs.io/en/stable/installation.html)
-- [Docker](https://docs.docker.com/install/linux/docker-ce/ubuntu)
 
 
 
@@ -60,38 +67,49 @@ This module has a few dependencies:
 ## What Includes
 
 Followiing things includes in this role:
-- Nginx
+- nginx
 
 
 
 
 
-## Examples
+
+
+## Example Playbook
 
 **IMPORTANT:** Since the `master` branch used in `source` varies based on new modifications, we suggest that you use the release versions [here](https://github.com/clouddrove/ansible-role-nginx/releases).
 
 
-### Simple Example
-For including the role in your playbook this is the basic configuration:
-```ansible
-    - hosts: localhost
-      remote_user: root
-      roles:
-        - ansible-role-nginx
+```yaml
+- hosts: localhost
+  remote_user: root
+  roles:
+    - clouddrove.ansible_role_nginx
+```
+
+
+## Variables
+
+```yaml
+    state: present
+    nginx_user: nginx
+    nginx_group: nginx
+    nginx_config_dir: /etc/nginx
+    nginx_log_path: /var/log/nginx
+    nginx_bind: 0.0.0.0
+    nginx_port: 80
+```
+
+
+## Installation
+
+```console
+  $ ansible-galaxy install clouddrove.ansible_role_nginx
 ```
 
 
 
 
-## Testing
-
-
-In this module testing is performed with [molecule](https://molecule.readthedocs.io/en/stable/index.html) and it is designed to aid in the development and testing of Ansible roles with multiple instances, operating systems and distributions, virtualization providers, test frameworks and testing scenarios.
-
-You need to run the following command in the root of Ansible Role:
-```molecule
-  molecule test
-```
 
 
 ## Feedback
