@@ -1,13 +1,36 @@
 ---
 
-- name: Install the nginx package
+- name: Install the nginx package  on debian
   apt:
-     name: nginx
-     state: present
-     update_cache: yes
+    name: nginx
+    state: "{{ state }}"
+    update_cache: true
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
+- name: ensure dependencies are installed on centos/redhat
+  yum:
+    pkg: epel-release
+    state: present
+  changed_when: false
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
 
-- name: reload systemd
-  command: systemctl daemon-reload
-  notify:
-     - restart nginx
+- name: Install the nginx package  on centos/redhat
+  yum:
+    name: nginx
+    state: "{{ state }}"
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+
+- name: ensure nginx service is restarted
+  service:
+    name: nginx
+    state: restarted
+  changed_when: false
+
+- name: wait for nginx to become ready
+  wait_for:
+    host: "0.0.0.0"
+    port: "80"
+    state: started
+    delay: 5
+    connect_timeout: 15
+    timeout: 300
