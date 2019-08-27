@@ -63,8 +63,6 @@ variables: |-
       nginx_group: nginx
       nginx_config_dir: /etc/nginx
       nginx_log_path: /var/log/nginx
-      nginx_bind:
-      nginx_port: 80
   ```
 
 # How to install project

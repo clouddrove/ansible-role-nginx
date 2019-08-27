@@ -96,8 +96,6 @@ Followiing things includes in this role:
     nginx_group: nginx
     nginx_config_dir: /etc/nginx
     nginx_log_path: /var/log/nginx
-    nginx_bind: 0.0.0.0
-    nginx_port: 80
 ```
 
 
