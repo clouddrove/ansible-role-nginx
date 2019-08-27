@@ -1,5 +1,4 @@
 ---
-# create nginx user
 
 - name: setup group
   group:
