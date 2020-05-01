@@ -24,6 +24,7 @@
   service:
     name: nginx
     state: restarted
+    enabled: true
   changed_when: false
 
 - name: wait for nginx to become ready
