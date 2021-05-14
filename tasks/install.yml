@@ -1,5 +1,16 @@
 ---
 
+- name: download foo.conf
+  get_url:
+    url: http://nginx.org/keys/nginx_signing.key
+    dest: /tmp/
+    mode: 0777
+
+- name: Add the signing key
+  shell:
+    "sudo apt-key add nginx_signing.key && sudo apt update"
+
+
 - name: Install the nginx package  on debian
   apt:
     name: nginx

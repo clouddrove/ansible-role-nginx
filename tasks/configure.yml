@@ -38,6 +38,11 @@
   with_fileglob:
     - ../templates/config/nginx.conf
 
+- name: copy latest nginx version list file
+  ansible.builtin.template:
+    src: ../templates/nginx.list
+    dest: /etc/apt/sources.list.d
+
 - name: transfer sites-enabled configuration
   template:
     src: "{{ item }}"
