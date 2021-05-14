@@ -1,6 +1,6 @@
 ---
 
-- name: download foo.conf
+- name: Download nginx Signing Key 
   get_url:
     url: http://nginx.org/keys/nginx_signing.key
     dest: /tmp/
