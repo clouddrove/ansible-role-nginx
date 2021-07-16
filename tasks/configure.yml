@@ -42,10 +42,12 @@
     - ../templates/config/nginx.conf
 
 - name: copy latest nginx version list file
-  ansible.builtin.template:
-    src: ../templates/nginx.list
-    dest: /etc/apt/sources.list.d
+  template:
+    src: "{{ item }}"
+    dest: "{{ apt_dir }}/sources.list.d"
     mode: 0644
+  with_fileglob:
+    - ../templates/nginx.list
   when: ansible_distribution == 'Ubuntu'
 
 - name: transfer sites-enabled configuration

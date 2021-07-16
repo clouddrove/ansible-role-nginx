@@ -8,3 +8,6 @@ nginx_group: nginx
 nginx_config_dir: /etc/nginx
 nginx_log_path: /var/log/nginx
 keysite: http://nginx.org/keys/nginx_signing.key
+
+# APT Directory
+apt_dir: /etc/apt
