@@ -21,6 +21,7 @@
   template:
     src: "{{ item }}"
     dest: "{{ nginx_config_dir }}/site.d/{{ item | basename }}"
+    mode: 0644
   with_fileglob:
     - ../templates/config/site.d/*.*
 
@@ -28,6 +29,7 @@
   template:
     src: "{{ item }}"
     dest: "{{ nginx_config_dir }}/error-page/{{ item | basename }}"
+    mode: 0644
   with_fileglob:
     - ../templates/config/error-page/*.*
 
@@ -35,6 +37,7 @@
   template:
     src: "{{ item }}"
     dest: "{{ nginx_config_dir }}/nginx.conf"
+    mode: 0644
   with_fileglob:
     - ../templates/config/nginx.conf
 
@@ -42,11 +45,14 @@
   ansible.builtin.template:
     src: ../templates/nginx.list
     dest: /etc/apt/sources.list.d
+    mode: 0644
+  when: ansible_distribution == 'Ubuntu'
 
 - name: transfer sites-enabled configuration
   template:
     src: "{{ item }}"
     dest: "{{ nginx_config_dir }}/sites-enabled/{{ item | basename }}"
+    mode: 0644
   with_fileglob:
     - ../templates/config/sites-enabled/*.*
 
