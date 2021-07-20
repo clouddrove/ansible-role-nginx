@@ -1,5 +1,4 @@
 ---
-
 - name: Adding APT repository key
   apt_key:
     url: "http://nginx.org/keys/nginx_signing.key"

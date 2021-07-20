@@ -1,5 +1,4 @@
 ---
-
 - name: create nginx dirs
   file:
     path: "{{ item|safe|trim }}"
