@@ -3,3 +3,4 @@
 *.iml
 *.zip
 molecule
+.cache

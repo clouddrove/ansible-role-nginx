@@ -1,5 +1,4 @@
 ---
-
 - name: create nginx dirs
   file:
     path: "{{ item|safe|trim }}"
@@ -21,6 +20,7 @@
   template:
     src: "{{ item }}"
     dest: "{{ nginx_config_dir }}/site.d/{{ item | basename }}"
+    mode: 0644
   with_fileglob:
     - ../templates/config/site.d/*.*
 
@@ -28,6 +28,7 @@
   template:
     src: "{{ item }}"
     dest: "{{ nginx_config_dir }}/error-page/{{ item | basename }}"
+    mode: 0644
   with_fileglob:
     - ../templates/config/error-page/*.*
 
@@ -35,13 +36,24 @@
   template:
     src: "{{ item }}"
     dest: "{{ nginx_config_dir }}/nginx.conf"
+    mode: 0644
   with_fileglob:
     - ../templates/config/nginx.conf
+
+- name: copy latest nginx version list file
+  template:
+    src: "{{ item }}"
+    dest: "{{ apt_dir }}/sources.list.d"
+    mode: 0644
+  with_fileglob:
+    - ../templates/nginx.list
+  when: ansible_distribution == 'Ubuntu'
 
 - name: transfer sites-enabled configuration
   template:
     src: "{{ item }}"
     dest: "{{ nginx_config_dir }}/sites-enabled/{{ item | basename }}"
+    mode: 0644
   with_fileglob:
     - ../templates/config/sites-enabled/*.*
 

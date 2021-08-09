@@ -1,0 +1,3 @@
+#Update the file
+deb [arch=amd64] http://nginx.org/packages/mainline/ubuntu/ focal nginx
+deb-src http://nginx.org/packages/mainline/ubuntu/ focal nginx
