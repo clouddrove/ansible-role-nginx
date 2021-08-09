@@ -7,7 +7,9 @@ galaxy_info:
   description: This ansible role is used to install Nginx Server on linux.
   company: "CloudDrove Inc."
   license: "license (BSD, MIT)"
-  min_ansible_version: 2.4
+  role_name: ansible_role_nginx
+  namespace: clouddrove
+  min_ansible_version: 2.8
   platforms:
     - name: Debian
       versions:

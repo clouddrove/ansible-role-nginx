@@ -1,5 +1,4 @@
 ---
-
 - name: setup group
   group:
     name: "{{ nginx_group }}"

@@ -1,5 +1,4 @@
 ---
-
 - name: Download nginx Signing Key 
   get_url:
     url: http://nginx.org/keys/nginx_signing.key
@@ -10,6 +9,10 @@
   shell:
     "sudo apt-key add nginx_signing.key && sudo apt update"
 
+- name: Adding APT repository key
+  apt_key:
+    url: "http://nginx.org/keys/nginx_signing.key"
+  when: ansible_distribution == 'Ubuntu'
 
 - name: Install the nginx package  on debian
   apt:
@@ -23,6 +26,11 @@
     pkg: epel-release
     state: present
   changed_when: false
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+
+- name: Disable SELinux
+  selinux:
+    state: disabled
   when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
 
 - name: Install the nginx package  on centos/redhat
