@@ -23,8 +23,8 @@ jobs:
       - name: Install yamllist
         run: pip3 install yamllint
 
-#      - name: Run yamllint.
-#        run: yamllint .
+      - name: Run yamllint.
+        run: yamllint .
 
   ansible-lint:
     name: ansible-lint
@@ -41,8 +41,8 @@ jobs:
       - name: Install ansible and other packages
         run: pip3 install ansible ansible-lint
 
-#      - name: Run ansible-lint.
-#        run: ansible-lint
+      - name: Run ansible-lint.
+        run: ansible-lint
 
   pre-commit:
     name: 'Pre-Commit'
