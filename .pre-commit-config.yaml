@@ -1,6 +1,5 @@
 ---
 repos:
-
   - repo: https://github.com/pre-commit/pre-commit-hooks.git
     rev: v3.4.0
     hooks:
@@ -8,7 +7,6 @@ repos:
       - id: trailing-whitespace
       - id: mixed-line-ending
       - id: check-byte-order-marker
-      - id: check-executables-have-shebangs
       - id: check-merge-conflict
       - id: debug-statements
       - id: check-yaml
