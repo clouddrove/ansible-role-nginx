@@ -1,11 +1,11 @@
 ---
-- name: setup group
-  group:
+- name: Setup group
+  ansible.builtin.group:
     name: "{{ nginx_group }}"
     system: true
 
-- name: setup user
-  user:
+- name: Setup user
+  ansible.builtin.user:
     name: "{{ nginx_user }}"
     system: true
     createhome: false

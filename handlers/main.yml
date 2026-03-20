@@ -1,17 +1,17 @@
 ---
 # handlers for ansible-role-nginx
 
-- name: restart nginx
-  systemd:
-    name: nginx
+- name: Restart nginx
+  ansible.builtin.systemd:
+    name: Nginx
     state: restarted
 
-- name: reload nginx
-  systemd:
-    name: nginx
+- name: Reload nginx
+  ansible.builtin.systemd:
+    name: Nginx
     state: reloaded
 
-- name: start nginx
-  systemd:
-    name: nginx
+- name: Start nginx
+  ansible.builtin.systemd:
+    name: Nginx
     state: started
